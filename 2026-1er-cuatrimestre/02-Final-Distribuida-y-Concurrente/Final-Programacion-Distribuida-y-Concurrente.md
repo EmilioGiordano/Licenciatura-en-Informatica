@@ -135,24 +135,24 @@ El caso de procesamiento de imágenes demuestra que, bajo estas condiciones, el 
 
 
 ## Referencias
-**Código:**
-- Repositorio con código fuente de `img_processor.py`: https://github.com/EmilioGiordano/Licenciatura-en-Informatica/tree/main/2026-1er-cuatrimestre/02-Final-Distribuida-y-Concurrente/paralell-img-source
+**Código fuente:**
+- [Repositorio con código fuente (paralell-img-source)](https://github.com/EmilioGiordano/Licenciatura-en-Informatica/tree/main/2026-1er-cuatrimestre/02-Final-Distribuida-y-Concurrente/paralell-img-source)
 
 **Documentación Python:**
-- Python Free-Threading: https://docs.python.org/3/howto/free-threading-python.html
-- Global Interpreter Lock (GIL): https://docs.python.org/3/glossary.html#term-global-interpreter-lock
-- PEP 703 – Making the GIL Optional: https://peps.python.org/pep-0703/
-- Threading & Concurrent Futures: https://docs.python.org/3/library/concurrent.futures.html
+- [Python Free-Threading](https://docs.python.org/3/howto/free-threading-python.html)
+- [Global Interpreter Lock (GIL)](https://docs.python.org/3/glossary.html#term-global-interpreter-lock)
+- [PEP 703 – Making the GIL Optional](https://peps.python.org/pep-0703/)
+- [Threading & Concurrent Futures](https://docs.python.org/3/library/concurrent.futures.html)
 
 **Bibliotecas:**
-- Pillow PyPI: https://pypi.org/project/pillow/
-- Pillow Documentation: https://pillow.readthedocs.io/en/stable/
-- Pillow Release 9.3.0 (GIL improvements): https://pillow.readthedocs.io/en/stable/releasenotes/9.3.0.html
-- Pillow Release 10.3.0: https://pillow.readthedocs.io/en/stable/releasenotes/10.3.0.html
+- [Pillow PyPI](https://pypi.org/project/pillow/)
+- [Pillow Documentation](https://pillow.readthedocs.io/en/stable/)
+- [Pillow Release 9.3.0 (GIL improvements)](https://pillow.readthedocs.io/en/stable/releasenotes/9.3.0.html)
+- [Pillow Release 10.3.0](https://pillow.readthedocs.io/en/stable/releasenotes/10.3.0.html)
 
 **Conceptos teóricos:**
-- Speedup: https://en.wikipedia.org/wiki/Speedup
-- Efficiency: https://en.wikipedia.org/wiki/Parallel_efficiency
-- Amdahl's Law: https://en.wikipedia.org/wiki/Amdahl%27s_law
+- [Speedup](https://en.wikipedia.org/wiki/Speedup)
+- [Efficiency](https://en.wikipedia.org/wiki/Parallel_efficiency)
+- [Amdahl's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law)
 
 
