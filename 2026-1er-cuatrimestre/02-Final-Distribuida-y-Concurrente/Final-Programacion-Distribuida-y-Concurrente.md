@@ -72,6 +72,7 @@ Se realizaron pruebas con 100, 1000 y 10000 imágenes, todas realizadas bajo las
 | 3.14t   | 1000     | 45.77s     | 8.37s    | 5.47x   | 68.3%      |
 | 3.12.6  | 10000    | 455.61s    | 195.40s  | 2.33x   | 29.1%      |
 | 3.14t   | 10000    | 471.00s    | 76.27s   | 6.18x   | 77.2%      |
+
 El paralelismo muestra mejoras consistentes en todos los casos, con speedups entre 3.4x y 6.2x dependiendo de la versión de Python.
 Se destacan dos diferencias primordiales: Las ejecuciones secuenciales se realizaron en menor tiempo con la versión `3.12.6`, mientras que sucede lo contrario con las ejecuciones paralelas, con un amplio margen de mejora para la versión `free-threading` frente a la versión estándar de Python. 
 A pesar de haber utilizado PIL, se obtienen mejores resultados al utilizar la versión `3.14t` al implementar paralelismo.
