@@ -136,7 +136,7 @@ El caso de procesamiento de imágenes demuestra que, bajo estas condiciones, el 
 
 ## Referencias
 **Código:**
-- Código completo: `image_processor.py` — Procesamiento secuencial y paralelo con `ThreadPoolExecutor`
+- Repositorio con código fuente de `img_processor.py`: https://github.com/EmilioGiordano/Licenciatura-en-Informatica/tree/main/2026-1er-cuatrimestre/02-Final-Distribuida-y-Concurrente/paralell-img-source
 
 **Documentación Python:**
 - Python Free-Threading: https://docs.python.org/3/howto/free-threading-python.html
