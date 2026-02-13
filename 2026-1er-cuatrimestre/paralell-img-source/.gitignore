@@ -1,0 +1,13 @@
+# Entorno virtual (uv / venv)
+.venv/
+venv/
+env/
+
+# Salidas generadas
+output_samples/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
