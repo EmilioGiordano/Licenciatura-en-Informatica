@@ -5,7 +5,7 @@ Asignatura: Programación Distribuida y Concurrente
 Fecha de entrega: 13/02/2025
 ## Introducción
 En la **ejecución secuencial**, las instrucciones se procesan una tras otra en un único flujo de control. En la **ejecución paralela**, varias tareas se ejecutan simultáneamente en distintos núcleos de la CPU, reduciendo el tiempo total cuando el trabajo es divisible en unidades independientes.
-En Python, el **GIL (Global Interpreter Lock)** históricamente limita el paralelismo real con hilos: solo un hilo puede ejecutar bytecode Python a la vez. Los threads ofrecen *concurrencia* (intercalado de tareas) pero no *paralelismo real* en tareas CPU-intensivas. **Python 3.14t (free-threading)** elimina esta restricción permitiendo paralelismo real con hilos.
+En Python, el **GIL (Global Interpreter Lock)** históricamente limitó el paralelismo real con hilos: solo un hilo puede ejecutar bytecode Python a la vez. Los threads ofrecen *concurrencia* (intercalado de tareas) pero no *paralelismo real* en tareas CPU-intensivas. **Python 3.14t (free-threading)** elimina esta restricción permitiendo paralelismo real con hilos.
 ## Tipos de Paralelismo
 Durante la lectura y realización de pruebas de código sobre programación distribuida, concurrente y paralela, he identificado dos enfoques principales para aplicar procesamiento paralelo:
 1. **Paralelismo de múltiples jobs independientes (N-jobs):** Ejecutar N tareas completas en paralelo, donde cada hilo procesa una tarea de inicio a fin. Ejemplos:
@@ -40,7 +40,7 @@ with ThreadPoolExecutor(max_workers=num_workers) as executor:
     ]
     results = [f.result() for f in futures]
 ```
-$n$ hilos procesan hasta $n$ imágenes simultáneamente.
+*n* hilos procesan hasta *n* imágenes simultáneamente.
 ### Operaciones CPU-Intensivas
 Operaciones de Pillow encargadas del procesamiento:
 ```python
@@ -104,7 +104,6 @@ Cada imagen es procesada sin comunicación con otras:
 # Thread 1: procesa imagen_009.jpg
 # Thread 2: procesa imagen_010.jpg
 # ...
-# Thread 8: procesa imagen_016.jpg
 ```
 Elimina race conditions y necesidad de locks (excepto para estadísticas compartidas).
 Cada imagen requiere aproximadamente el mismo tiempo (~0.34s), evitando que algunos threads terminen mucho antes que otros.
@@ -121,9 +120,8 @@ with self.lock:
 - **Tareas interdependientes:** Requiere sincronización que reduce eficiencia
 - **Recursos compartidos limitados:** Disco, red, base de datos pueden ser cuellos de botella ante un escenario donde los recursos sean muy limitados.
 ### Alternativas:
-- `multiprocessing`: Para evitar completamente el GIL, pero con mayor overhead de IPC
-- **Python 3.14t free-threading:** Para código Python puro CPU-intensivo
-- **Procesamiento asíncrono:** Para tareas I/O-bound (descargas, APIs)
+- `multiprocessing`: Crea procesos separados con memoria independiente, evitando completamente el GIL. Sin embargo, requiere copiar datos entre procesos (overhead de IPC), lo que puede ser costoso. Útil cuando las tareas son extremadamente pesadas y el tiempo de comunicación es insignificante comparado con el procesamiento.
+- **Procesamiento asíncrono:** Para tareas I/O-bound (descargas, APIs, base de datos) donde el cuello de botella es esperar respuestas, no procesamiento CPU. Permite manejar miles de operaciones concurrentes con un solo thread mediante un event loop.
 ## Conclusión
 La distribución paralela de trabajo mejora significativamente los tiempos de ejecución cuando el problema es divisible en tareas independientes. Sin embargo, el beneficio no siempre es lineal: en casos con tareas muy rápidas, pocas tareas, o alta interdependencia, el overhead puede reducir o incluso anular las ganancias.
 Es importante distinguir que este informe se enfoca en **paralelismo de N-jobs independientes**, donde cada tarea es autónoma. En contraste, el **paralelismo algorítmico** (paralelizar un único algoritmo grande subdividiéndolo) enfrenta desafíos adicionales como la Ley de Amdahl, sincronización entre fragmentos, y balanceo de carga, lo que puede limitar significativamente el speedup alcanzable.
@@ -132,8 +130,6 @@ El paralelismo de N-jobs independientes es efectivo cuando:
 2. Son **CPU-intensivas** (justifican el overhead de threading)
 3. Hay **suficiente trabajo** para todos los cores disponibles
 El caso de procesamiento de imágenes demuestra que, bajo estas condiciones, el paralelismo reduce drásticamente los tiempos de ejecución.
-
-
 ## Referencias
 **Código fuente:**
 - [Repositorio con código fuente (paralell-img-source)](https://github.com/EmilioGiordano/Licenciatura-en-Informatica/tree/main/2026-1er-cuatrimestre/02-Final-Distribuida-y-Concurrente/paralell-img-source)
